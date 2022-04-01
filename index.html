@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>
+      Game
+    </title>
+    <style>
+      body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+      }
+      video {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        margin: 0;
+        padding: 0
+      }
+      h2 {
+        color: white;
+        text-align: center;
+        display: block;
+        position: absolute;
+        top: 44vh;
+        width: 100%;
+        font-size: 400%;
+      }
+      h2:hover {
+        color:grey
+      }
+    </style>
+  </head>
+  <body>
+    <video>
+      <source src="Game.mp4" type="video/mp4">
+    </video>
+    <h2 id="play">
+      PLAY
+    </h2>
+
+    <script>
+      window.onclick = function(){
+        document.querySelector("video").play();
+        document.querySelector("h2").style.display = "none";
+      };
+    </script>
+  </body>
+</html>
