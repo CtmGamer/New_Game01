@@ -25,9 +25,15 @@
         top: 44vh;
         width: 100%;
         font-size: 400%;
+        opacity: 1;
       }
       h2:hover {
         color:grey
+      }
+      /* The animation code */
+      @keyframes fade {
+        from {opacity: 1;}
+        to {opacity: 0;}
       }
     </style>
   </head>
@@ -35,14 +41,36 @@
     <video>
       <source src="Game.mp4" type="video/mp4">
     </video>
-    <h2 id="play">
+    <h2>
       PLAY
     </h2>
 
     <script>
+      var vid = document.querySelector("video");
+      var txt = document.querySelector("h2");
+      var a = 0;
+      var sI = setInterval(() => {
+        var txt2 = "";
+        for(var i = 0; i < a; i++){
+          txt2+=".";
+        }
+        txt.innerText = "LOADING GAME"+txt2;
+        a = (a+1 > 3) ? 0: a+1;
+      }, 250);
+
+      setTimeout(() => {
+        clearTimeout(sI);
+        txt.innerText = "PLAY"
+      }, 5000);
+
       window.onclick = function(){
-        document.querySelector("video").play();
-        document.querySelector("h2").style.display = "none";
+        if(txt.innerText === "PLAY"){
+          setTimeout(() => {
+            vid.play();
+          }, 1000);
+          // txt.style.display = "none";
+          txt.style.animation = "fade 0.5s linear forwards";
+        }
       };
     </script>
   </body>
